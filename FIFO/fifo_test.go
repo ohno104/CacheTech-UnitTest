@@ -6,7 +6,6 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	_ "github.com/stretchr/testify/assert"
 )
 
 func TestSetGet(t *testing.T) {
