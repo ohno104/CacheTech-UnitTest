@@ -9,7 +9,7 @@ import (
 
 func TestSetGetWithAssert(t *testing.T) {
 	cache := New(24, nil)
-	cache.DelOldsest()
+	cache.DelOldest()
 	cache.Set("k1", "A")
 	assert.Equal(t, cache.Get("k1"), "A")
 	cache.Del("k1")
@@ -35,7 +35,7 @@ func TestOnEvictedWithAssert(t *testing.T) {
 	cache.Get("D")
 	cache.Get("D")
 	cache.Get("C")
-	cache.DelOldsest()
+	cache.DelOldest()
 	expected = []string{"A", "B"}
 	assert.Equal(t, expected, keys)
 

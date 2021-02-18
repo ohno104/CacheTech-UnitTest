@@ -76,7 +76,7 @@ func (l *lfu) Del(key string) {
 	}
 }
 
-func (l *lfu) DelOldsest() {
+func (l *lfu) DelOldest() {
 	if l.queue.Len() == 0 {
 		return
 	}
