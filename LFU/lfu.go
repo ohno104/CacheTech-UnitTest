@@ -2,7 +2,6 @@ package lfu
 
 import (
 	"container/heap"
-	"fmt"
 
 	cache "felix.bs.com/felix/BeStrongerInGO/CacheTech"
 )
@@ -37,8 +36,8 @@ func (l *lfu) Set(key string, value interface{}) {
 	if e, ok := l.cache[key]; ok {
 		l.usedBytes = l.usedBytes - cache.CalcLen(e.value) + cache.CalcLen(value)
 		l.queue.update(e, value, e.weight+1)
-		fmt.Println("l.usedBytes: ", l.usedBytes)
-		fmt.Println("CalcLen: ", cache.CalcLen(value))
+		//fmt.Println("l.usedBytes: ", l.usedBytes)
+		//fmt.Println("CalcLen: ", cache.CalcLen(value))
 		return
 	}
 
@@ -50,13 +49,13 @@ func (l *lfu) Set(key string, value interface{}) {
 	l.cache[key] = en
 
 	l.usedBytes += en.Len()
-	fmt.Println("new l.usedBytes: ", l.usedBytes)
-	fmt.Println("l.maxBytes: ", l.maxBytes)
+	//fmt.Println("new l.usedBytes: ", l.usedBytes)
+	//fmt.Println("l.maxBytes: ", l.maxBytes)
 	if l.maxBytes > 0 && l.usedBytes > l.maxBytes {
 		//超過限制大小,剔除最少使用的entry
 		l.removeElement(heap.Pop(l.queue))
 
-		fmt.Println("removeElement! ")
+		//fmt.Println("removeElement! ")
 	}
 }
 
