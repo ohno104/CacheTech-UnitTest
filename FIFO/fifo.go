@@ -46,7 +46,7 @@ func (f *fifo) Set(key string, value interface{}) {
 
 	//超過限制大小,剔除無用的entry
 	if f.maxBytes > 0 && f.usedBytes > f.maxBytes {
-		f.DelOldsest()
+		f.DelOldest()
 	}
 }
 
@@ -65,8 +65,8 @@ func (f *fifo) Del(key string) {
 	}
 }
 
-//DelOldsest: 剔除無用的entry (FIFO:為首節點)
-func (f *fifo) DelOldsest() {
+//DelOldest: 剔除無用的entry (FIFO:為首節點)
+func (f *fifo) DelOldest() {
 	f.removeElement(f.ll.Front())
 }
 

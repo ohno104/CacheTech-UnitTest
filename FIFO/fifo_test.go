@@ -6,12 +6,11 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	_ "github.com/stretchr/testify/assert"
 )
 
 func TestSetGet(t *testing.T) {
 	cache := New(24, nil)
-	cache.DelOldsest()
+	cache.DelOldest()
 	cache.Set("k1", 1)
 	v := cache.Get("k1")
 	if v != 1 {
