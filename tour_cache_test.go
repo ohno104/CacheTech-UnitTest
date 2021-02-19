@@ -1,12 +1,13 @@
 package cache_test
 
 import (
-	"log"
 	"sync"
 	"testing"
 
 	cache "felix.bs.com/felix/BeStrongerInGO/CacheTech"
 	lru "felix.bs.com/felix/BeStrongerInGO/CacheTech/LRU"
+	_ "github.com/allegro/bigcache/v2"
+	_ "github.com/coocood/freecache"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -19,7 +20,7 @@ func TestTourCacheGet(t *testing.T) {
 	}
 
 	getter := cache.GetFunc(func(key string) interface{} {
-		log.Println("[From mock DB] find key", key)
+		//log.Println("[From mock DB] find key", key)
 
 		if val, ok := mock[key]; ok {
 			return val
