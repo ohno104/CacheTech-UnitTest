@@ -1,7 +1,6 @@
 package cache
 
 import (
-	"log"
 	"sync"
 )
 
@@ -47,7 +46,7 @@ func (sc *safeCache) get(key string) interface{} {
 
 	v := sc.cache.Get(key)
 	if v != nil {
-		log.Println("[TourCache] hit")
+		//log.Println("[TourCache] hit")
 		sc.nhit++
 	}
 
